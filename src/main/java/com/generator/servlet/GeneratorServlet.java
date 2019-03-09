@@ -61,6 +61,7 @@ public class GeneratorServlet extends HttpServlet {
      *
      * @throws ServletException if an error occurs
      */
+    @Override
     public void init() throws ServletException {
         super.init();
     }
@@ -74,6 +75,7 @@ public class GeneratorServlet extends HttpServlet {
      * @throws ServletException if an error occurred
      * @throws IOException if an error occurred
      */
+	@Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	try {
@@ -95,7 +97,7 @@ public class GeneratorServlet extends HttpServlet {
     		boolean overwrite = true;
     		// 准备 配置文件
     		final String path = request.getSession().getServletContext().getRealPath(File.separator);
-    		final String srcPath  = "/src" + new Date().getTime();
+    		final String srcPath  = "/src" + System.currentTimeMillis();
     		
     		param.setBuildPath(path + srcPath);
     		String config_path = "/WEB-INF/classes/runtimecfg/generatorConfig.xml";
@@ -156,6 +158,7 @@ public class GeneratorServlet extends HttpServlet {
      * @throws ServletException if an error occurred
      * @throws IOException if an error occurred
      */
+	@Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.doGet(request, response);
@@ -164,6 +167,7 @@ public class GeneratorServlet extends HttpServlet {
     /**
      * Destruction of the servlet. <br>
      */
+	@Override
     public void destroy() {
         super.destroy(); // Just puts "destroy" string in log
     }
